@@ -23,51 +23,16 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             width: 90%;
-            max-width: 767px;
+            max-width: 667px;
         }
 
-        .strand {
-            margin: 10px 0;
-            padding: 10px;
-            background-color: #e0e0e0;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .strand:hover {
-            background-color: #d0d0d0;
-        }
-
-        .hidden {
-            display: none;
-        }
-        
         iframe {
-            width: 100%;
-            height: 529px;
+            width: 90%;
+            height: 829px;
             border: 1px solid #ccc;
             margin-top: 20px;
             border-radius: 5px;
-        }
-
-        .controls {
-            margin-top: 20px;
-        }
-
-        .controls button {
-            margin: 5px;
-            padding: 10px;
-            cursor: pointer;
-            border: none;
-            border-radius: 5px;
-            background-color: #007bff;
-            color: white;
-            transition: background-color 0.3s;
-        }
-
-        .controls button:hover {
-            background-color: #0056b3;
+            overflow: hidden;
         }
     </style>
 </head>
@@ -76,49 +41,7 @@
         <h1>NYT Strands Game</h1>
         
         <!-- IFrame embedding an external game or page -->
-        <iframe src="https://nytstrands.net/" title="Nytstrands Game"></iframe>
-
-        <div class="controls">
-            <button onclick="changeBackgroundColor()">Change Background Color</button>
-            <button onclick="toggleFullScreen()">Toggle Full Screen</button>
-        </div>
+        <iframe src="https://strands.game/strands-game" title="Nytstrands Game" scrolling="no"></iframe>
     </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const strands = document.querySelectorAll('.strand');
-            const message = document.getElementById('message');
-            let completedStrands = 0;
-
-            strands.forEach(strand => {
-                strand.addEventListener('click', () => {
-                    strand.classList.add('hidden');
-                    completedStrands++;
-                    if (completedStrands === strands.length) {
-                        message.classList.remove('hidden');
-                    }
-                });
-            });
-        });
-
-        function changeBackgroundColor() {
-            const colors = ['#f0f0f0', '#ffdddd', '#ddffdd', '#ddddff', '#ffffdd'];
-            const currentColor = document.body.style.backgroundColor;
-            let newColor = colors[Math.floor(Math.random() * colors.length)];
-            while (newColor === currentColor) {
-                newColor = colors[Math.floor(Math.random() * colors.length)];
-            }
-            document.body.style.backgroundColor = newColor;
-        }
-
-        function toggleFullScreen() {
-            if (!document.fullscreenElement) {
-                document.documentElement.requestFullscreen();
-            } else {
-                if (document.exitFullscreen) {
-                    document.exitFullscreen();
-                }
-            }
-        }
-    </script>
 </body>
 </html>
